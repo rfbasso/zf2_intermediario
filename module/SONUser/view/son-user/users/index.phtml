@@ -1,0 +1,28 @@
+<h1>Users</h1>
+<p><a href="<?=$this->url('sonuser-admin/default', array('action' => 'new'))?>" class="btn btn-primary btn-lg" data-role="button">Novo</a></p>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>Ação</th>
+    </tr>
+    <?php foreach($this->data as $entity): ?>
+    <tr>
+        <td><?php echo $entity->getId()?></td>
+        <td><?php echo $entity->getNome()?></td>
+        <td><?php echo $entity->getEmail()?></td>
+        <td width="80">
+            <?php /*<a href="<?=$this->url('sonuser-admin/pagination', array('controller' => 'users', 'action' => 'edit', 'id' => $entity->getId()))?>">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </a>
+            <a href="<?=$this->url('sonuser-admin/pagination', array('controller' => 'users', 'action' => 'delete', 'id' => $entity->getId()))?>">
+                <span class="glyphicon glyphicon-remove"></span>
+            </a> */?>
+        </td>
+    </tr>
+    <?php endforeach; ?>
+</table>
+<br>
+<?php echo $this->paginationControl($this->data,'Sliding','paginator'); ?>
+

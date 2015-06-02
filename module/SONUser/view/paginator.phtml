@@ -1,0 +1,45 @@
+<?php
+$urlPattern = $_SERVER['REQUEST_URI'];
+$formatUrl = function ($page) use ($urlPattern) {
+            if (!preg_match('/page/', $urlPattern))
+                return $urlPattern . "/page/" . $page;
+            else
+                return preg_replace('/\d/', $page, $urlPattern);
+        };
+?>
+<center>
+    
+<?php if ($this->pageCount): ?>
+
+<nav>
+    <ul class="pagination">
+        <!-- First page link -->       
+        <li class="<?=isset($this->previous) ? '' : 'disabled'?>">
+            <a href="<?php echo $formatUrl($this->previous) ?>">
+                &laquo;
+            </a>
+        </li>       
+        
+        <!-- Numbered page links -->
+        <?php foreach ($this->pagesInRange as $page): ?>
+        <li class="<?=$page != $this->current ? '' : 'active'?>">
+            <a href="<?php echo $formatUrl($page) ?>">
+                <?php echo $page; ?>
+            </a>
+        </li>          
+        <?php endforeach; ?>
+    
+        <!-- Next page link -->
+        <li class="<?=isset($this->next) ? '' : 'disabled'?>">
+            <a href="<?php echo $formatUrl($this->next) ?>">
+                &raquo;
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+</div>
+  
+<?php endif; ?>
+      
+</center>

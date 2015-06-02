@@ -1,0 +1,51 @@
+<h3>Register</h3>
+
+<?php if($this->messages): ?>
+<div class="alert alert-danger">
+    <?php echo $this->messages[0]; ?>
+</div>
+
+<?php else: ?>
+
+
+
+<?php 
+$form = $this->form; 
+$form->setAttribute('action',$this->url('sonuser-register',array('controller' => 'index', 'action' => 'register')));
+$form->setAttribute('style','width: 50%');
+$form->prepare();
+echo $this->form()->openTag($form);
+#echo $this->formCollection($form);
+echo $this->formHidden($form->get('security'));
+?>
+
+<div class="form-group">
+<?php
+echo $this->formRow($form->get('nome'));
+?>
+</div>
+<div class="form-group">
+<?php
+echo $this->formRow($form->get('email'));
+?>
+</div>
+<div class="form-group">
+<?php
+echo $this->formRow($form->get('password'));
+?>
+</div>
+<div class="form-group">
+<?php
+echo $this->formRow($form->get('confirmation'));
+?>
+</div>
+<div class="form-group">
+<?php
+echo $this->formSubmit($form->get('submit'));
+?>
+</div>
+
+<?php 
+echo $this->form()->closeTag();
+
+endif;

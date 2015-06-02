@@ -1,0 +1,7 @@
+<h3>Activate</h3>
+
+<?php if(isset($this->user)): ?>
+<p>Usuário <b><?=$this->user->getNome()?></b> ativado com sucesso!</p>
+<?php else: ?>
+<p>Não rolou a ativação!</p>
+<?php endif; ?>
